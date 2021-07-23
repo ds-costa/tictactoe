@@ -1,0 +1,164 @@
+/* Todo: socket io */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+:root {
+    /* Logo and Hover */
+    --color-primary: #609CE1;
+    --color-secondary: #b2cae6;
+    /*  */
+    --color-btn: #133863;
+    /*  */
+    --color-background: #E1ECF9;
+    /*  */
+    --color-navbar: #2369B8;
+    --color-box: #2369B8;
+    /*  */
+    --color-footer: #091D34;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--color-background);
+}
+
+.nav {
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    background-color: var(--color-navbar);
+}
+
+.nav__title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.nav__link a {
+    text-decoration: none;
+}
+
+.btn {
+    margin: 0 .5rem;
+    padding: 1rem;
+    width: 7rem;
+    font-weight: bold;
+    border-radius: .25em;
+    border: none;
+    color: var(--color-primary);
+    background-color: var(--color-btn);
+    cursor: pointer;
+}
+
+.nav__title,
+.nav__link a,
+.btn {
+    color: var(--color-primary);
+}
+
+.nav__links-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    list-style: none;
+}
+
+
+/* Desativar o flex destroi o grid (pq?) */
+
+#app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 0.5rem;
+    margin-top: 0.5rem;
+    /* max-width: 900px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-label-wrapper {
+    display: flex;
+    margin: 0 1rem 1rem 1rem;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 4px;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.box {
+    width: 6.5rem;
+    height: 6.5rem;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: var(--color-box);
+    cursor: pointer;
+    transition: .1s;
+}
+
+.box:hover:not(.box--active) {
+    background-color: var(--color-primary);
+    transition: .1s;
+}
+
+.box--active {
+    background-color: var(--color-btn);
+}
+
+.box .box__player-option {
+    color: var(--color-background);
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+}
+
+.menu-wrapper {
+    margin: 1rem;
+}
+
+.time-bar {
+    background-color: #333;
+    width: 100%;
+    height: 0.5rem;
+    margin-bottom: 2rem;
+    animation: timeout 15s;
+}
+
+@keyframes timeout {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+
+/* Desktop */
+
+@media (min-width: 600px) {
+    body {
+        background-color: brown;
+    }
+}
