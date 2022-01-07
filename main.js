@@ -12,7 +12,7 @@ const winSequences = [
 ];
 
 const HTMLtemplates = {
-    emptyBox: `<div class="box"></div>`,
+    emptyCell: `<div class="cell"></div>`,
     playerSymbol: (isPlayerOne) => `<p class="box__player-option">${isPlayerOne ? 'X' : 'O'}</p>`
 };
 
@@ -21,17 +21,17 @@ const boardElement = document.querySelector('.board');
 let isPlayerOneTurn = true;
 
 for (let i = 0; i < BOX_QUANTITY; i++) {
-    boardElement.innerHTML += HTMLtemplates.emptyBox;
+    boardElement.innerHTML += HTMLtemplates.emptyCell;
 }
 
-let boxes = document.querySelectorAll('.box');
+let cells = document.querySelectorAll('.cell');
 
-boxes.forEach((box, index) => {
-    box.addEventListener('click', (e) => {
+cells.forEach((cell, index) => {
+    cell.addEventListener('click', (e) => {
         e.preventDefault();
 
-        box.innerHTML = HTMLtemplates.playerSymbol(isPlayerOneTurn);
-        box.classList.add('box--active');
+        cell.innerHTML = HTMLtemplates.playerSymbol(isPlayerOneTurn);
+        cell.classList.add('cell--active');
         board[index] = isPlayerOneTurn ? 'X' : 'O';
         isPlayerOneTurn = !isPlayerOneTurn;
 
