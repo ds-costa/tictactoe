@@ -1,5 +1,3 @@
-const BOX_QUANTITY = 9;
-
 const winSequences = [
     [0, 1, 2],
     [3, 4, 5],
@@ -11,46 +9,53 @@ const winSequences = [
     [2, 4, 6]
 ];
 
-const HTMLtemplates = {
-    emptyCell: `<div class="cell"></div>`,
-    playerSymbol: (isPlayerOne) => `<p class="box__player-option">${isPlayerOne ? 'X' : 'O'}</p>`
+class UI {
+
+    constructor() {
+        this.boardCells = document.getElementsByClassName('cell');
+        this.currentPlayerLabel = document.getElementsByName('text-label'); 
+        this.btnNewGame = document.getElementById('btn-new-game');
+    }
+
+    reset() {
+        this.boardClear();
+    }
+
+    boardClear() {
+        for(const cell of this.boardCells) {
+            console.log(cell);
+        }
+    }
+}
+
+
+class GameState {
+    
+    constructor() {
+        this.board = ['', '', '', '', '', '', '', '', ''];
+        this.isPlayerOneTurn = true;
+    }
+
+    reset() {
+        this.board = ['', '', '', '', '', '', '', '', ''];
+        this.isPlayerOneTurn = true;
+    }
+
+    log() {
+        console.log(this.board);
+        console.log(this.isPlayerOneTurn);
+    }
+
+    // getPlayerSymbol() {
+    //     return `<p class="box__player-option">${this.isPlayerOneTurn ? 'X' : 'O'}</p>`;
+    // }
 };
 
-const board = ['', '', '', '', '', '', '', '', ''];
-const boardElement = document.querySelector('.board');
-let isPlayerOneTurn = true;
+const gameState = new GameState();
+const gameUI = new UI();
 
-for (let i = 0; i < BOX_QUANTITY; i++) {
-    boardElement.innerHTML += HTMLtemplates.emptyCell;
+function setup() {
+    gameUI.btnNewGame.addEventListener('click', () => gameUI.reset());
 }
 
-let cells = document.querySelectorAll('.cell');
-
-cells.forEach((cell, index) => {
-    cell.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        cell.innerHTML = HTMLtemplates.playerSymbol(isPlayerOneTurn);
-        cell.classList.add('cell--active');
-        board[index] = isPlayerOneTurn ? 'X' : 'O';
-        isPlayerOneTurn = !isPlayerOneTurn;
-
-        document.querySelector('.text-label').innerText = isPlayerOneTurn ? "Player 1 nick" : "Player 2 nick";
-
-    }, { once: true })
-})
-
-/**
- * Client code
- */
-function main() {
-
-
-
-    /**
-     * Events
-     */
-    return;
-}
-
-main();
+setup();
