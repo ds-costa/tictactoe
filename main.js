@@ -9,12 +9,13 @@ const winSequences = [
     [2, 4, 6]
 ];
 
+// ui handling
 class UI {
 
     constructor() {
-        this.boardCells = document.getElementsByClassName('cell');
-        this.currentPlayerLabel = document.getElementsByName('text-label'); 
-        this.btnNewGame = document.getElementById('btn-new-game');
+        this.boardCells = document.querySelectorAll('.cell');
+        this.currentPlayerLabel = document.querySelector('.text-label'); 
+        this.btnNewGame = document.querySelector('#btn-new-game');
     }
 
     reset() {
@@ -28,7 +29,7 @@ class UI {
     }
 }
 
-
+// state handling
 class GameState {
     
     constructor() {
@@ -45,17 +46,10 @@ class GameState {
         console.log(this.board);
         console.log(this.isPlayerOneTurn);
     }
-
-    // getPlayerSymbol() {
-    //     return `<p class="box__player-option">${this.isPlayerOneTurn ? 'X' : 'O'}</p>`;
-    // }
 };
 
 const gameState = new GameState();
 const gameUI = new UI();
 
-function setup() {
-    gameUI.btnNewGame.addEventListener('click', () => gameUI.reset());
-}
-
-setup();
+// setup();
+// update();
